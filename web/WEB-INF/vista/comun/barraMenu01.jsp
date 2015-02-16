@@ -1,5 +1,6 @@
 
     <!-- IS: Barra Menu Principal -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
     <section class="barraMenu2">
         <span><a href="irInicio.do">Inicio</a></span>
         <span><a href="solicitarListarAutos.do">Autos</a></span>
