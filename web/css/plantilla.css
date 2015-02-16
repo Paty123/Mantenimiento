@@ -19,7 +19,7 @@ table.barraMenu {
 	background-color:#B4CED4;
 	border-bottom:1px solid red;
 	border-top:1px solid red;
-	font-family:Verdana, Arial;
+	font-family: 'Open Sans Condensed', sans-serif;
 	font-size:11px;
 	width:100%;				
 }
@@ -52,14 +52,14 @@ table.barraDerecha {
 table.barraPie {
 	background-color:#FFFFFF;
 	border-top:1px solid red;
-	font-family:Verdana, Arial;
+	font-family: 'Open Sans Condensed', sans-serif;
         font-size:11px;
 	height:25px;
 	width:100%;				
 }
 table.barraDerechos {
 	background-color:#FFFFFF;
-	font-family:Verdana, Arial;
+	font-family: 'Open Sans Condensed', sans-serif;
         font-size:9px;
 	width:100%;				
 }
