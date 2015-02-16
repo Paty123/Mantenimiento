@@ -2,7 +2,7 @@
 
 body {
 	margin:0 0 0 0;
-	font-family: Arial;
+	font-family: 'Open Sans Condensed', sans-serif;
 }
 table.marco {
 	border-collapse:collapse;
@@ -84,6 +84,7 @@ body {
 }
 .barraBanner2 #big {
 	font-size: 70px;
+	font-family: 'Open Sans Condensed', sans-serif;
 }
 .barraBanner2 #descripcion {
 	display: block;

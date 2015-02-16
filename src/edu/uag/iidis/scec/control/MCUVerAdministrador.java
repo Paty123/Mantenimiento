@@ -20,26 +20,20 @@ import org.apache.struts.actions.MappingDispatchAction;
 
 
 
-public final class MCURegistrarAuto 
+public final class MCUVerAdministrador 
         extends MappingDispatchAction {
 
     private Log log = LogFactory.getLog(MCURegistrarUsuario.class);
 
 
-    public ActionForward solicitarRegistroAuto(
+    public ActionForward solicitarValAdministrador(
                 ActionMapping mapping,
                 ActionForm form,
                 HttpServletRequest request,
                 HttpServletResponse response)
             throws Exception {
 
-/////////////////////////////////////////////////////////
-       FormaNuevoAuto forma = (FormaNuevoAuto)form;
 
-        ManejadorCiudades mr = new ManejadorCiudades();
-       Collection resultado = mr.listarCiudades();
-
-       forma.setCiudades( resultado );
 
         if (log.isDebugEnabled()) {
             log.debug(">solicitarRegistroAuto");
@@ -48,44 +42,7 @@ public final class MCURegistrarAuto
         return (mapping.findForward("exito"));
     }
 
-
-
-
-
-
-
-
-    public ActionForward procesarRegistroAutoCiudades(
-                ActionMapping mapping,
-                ActionForm form,
-                HttpServletRequest request,
-                HttpServletResponse response)
-            throws Exception {
-
-        FormaNuevoAutoCiudades forma = (FormaNuevoAutoCiudades)form;
-
-        ManejadorCiudades mr = new ManejadorCiudades();
-        if (log.isDebugEnabled()) {
-            log.debug(">solicitarRegistroAutoCiudades: buscando:"+forma.getciudadBuscar());
-        }
-        Collection resultado = mr.buscarCiudades(forma.getciudadBuscar());
-
-        forma.setCiudades( resultado );
-
-        ManejadorEstados mr2 = new ManejadorEstados();
-        Collection resultado2 = mr2.listarEstados();
-
-        forma.setEstados( resultado2 );
-
-        if (log.isDebugEnabled()) {
-            log.debug(">solicitarRegistroAutoCiudades");
-        }
-
-        return (mapping.findForward("exito"));
-    }
-
-
-    public ActionForward procesarRegistroAuto(
+public ActionForward procesarValAdministrador(
                 ActionMapping mapping,
                 ActionForm form,
                 HttpServletRequest request,
@@ -93,7 +50,8 @@ public final class MCURegistrarAuto
             throws Exception {
 
         if (log.isDebugEnabled()) {
-            log.debug(">procesarRegistroAuto");
+            log.debug(">procesar validacion del Administrador");
+
         }
 
         // Verifica si la acción fue cancelada por el usuario
@@ -105,27 +63,32 @@ public final class MCURegistrarAuto
         }
 
         
-        // Se obtienen los datos para procesar el registro
-        FormaNuevoAuto forma = (FormaNuevoAuto)form;
+       log.debug("Formulario anterior");
+       FormaValAdministrador forma=(FormaValAdministrador) form;
 
-        Auto rol = new Auto(forma.getMarca(),
-                          forma.getColor(), 
-                          forma.getPlacas(), 
-                          forma.getPropietario(), 
-                          forma.getidCiudad());
+       Administrador administrador=new Administrador(forma.getusuario(),forma.getPassword);
 
-        ManejadorAutos mr = new ManejadorAutos();
-        int resultado = mr.crearAuto(rol);
+             
+     ManejadorAdministradores mr=new ManejadorAdministradores();
 
-        ActionMessages errores = new ActionMessages();
+
+
+   int resultado=mr.permitirAcceso(administrador);
+
+   ActionMessages errores=new ActionMessages();
+
+
+
+
         switch (resultado) {
             case 0:   
+                request.getSession().setAttribute("Administrador",administrador);
                 return (mapping.findForward("exito"));
 
             case 1:
                 errores.add(ActionMessages.GLOBAL_MESSAGE,
-                            new ActionMessage("errors.nombreAutoYaExiste",
-                                               forma.getMarca()));                
+                            new ActionMessage("errors.nombreAdministradorYaExiste",
+                                               forma.getusuario()));                
                 saveErrors(request, errores);
                 return (mapping.getInputForward());
 

@@ -50,10 +50,13 @@ public final class MCUListarAutos
         ManejadorAutos mr = new ManejadorAutos();
         Collection resultado = mr.listarAutos();
 
-        ManejadorCiudades mr2 = new ManejadorCiudades();
-        Collection resultado2 = mr2.listarCiudades();
+////////////////////////////////////////////////////////////////
 
-        forma.setCiudades( resultado2 );
+        //ManejadorCiudades mr2 = new ManejadorCiudades();
+        //Collection resultado2 = mr2.listarCiudades();
+
+        //forma.setCiudades( resultado2 );
+////////////////////////////////////////////////////////////////
 
         ActionMessages errores = new ActionMessages();
         if (resultado != null) {
