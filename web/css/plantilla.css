@@ -86,6 +86,7 @@ body {
 	font-size: 70px;
 	font-family: 'Open Sans Condensed', sans-serif;
 	backgroug-color:#3DD2FF; 
+	color:white;
 }
 .barraBanner2 #descripcion {
 	display: block;
@@ -121,11 +122,13 @@ body {
 	background: #052a54;
 	text-align: center;
 	color: #fff;
+	font-family: 'Open Sans Condensed', sans-serif;
 }
 .copy {
 	padding: 40px 0;
 	text-align: center;
 	background: #fff;
+	font-family: 'Open Sans Condensed', sans-serif;
 }
 .boton {
 	padding: 10px;
