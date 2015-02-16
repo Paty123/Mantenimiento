@@ -161,7 +161,7 @@ public class AutoDAO {
  //                          .next()).intValue();
 // de acuerdo al nuevo formato
  
-			String hql = "select Marca from Auto where Marca = :Marca";
+			String hql = "select Marca from Autos where marca =:marca";
 			
 			 if (log.isDebugEnabled()) {
            		 log.debug(hql + nombreAuto);

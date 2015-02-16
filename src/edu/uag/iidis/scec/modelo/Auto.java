@@ -56,8 +56,8 @@ public class Auto extends ClaseBase
         return this.idCiudad;
     }
 
-    public void setidCiudad(Long id) {
-        this.idCiudad = id;
+    public void setidCiudad(Long idCiudad) {
+        this.idCiudad = idCiudad;
     }
     /**
      * Regresa el nombres del rol.
