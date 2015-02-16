@@ -85,6 +85,7 @@ body {
 .barraBanner2 #big {
 	font-size: 70px;
 	font-family: 'Open Sans Condensed', sans-serif;
+	backgroug-color:#3DD2FF; 
 }
 .barraBanner2 #descripcion {
 	display: block;
