@@ -51,7 +51,7 @@ public class AdministradorDAO {
 
             throw new ExcepcionInfraestructura(ex);
         }
-        return auto;
+        return administrador;
     }
 
 
