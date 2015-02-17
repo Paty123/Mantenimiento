@@ -27,7 +27,7 @@ public class AdministradorDAO {
     public Administrador buscarPorId(Long idAdministrador, boolean bloquear)
             throws ExcepcionInfraestructura {
 
-        Auto auto = null;
+        Administrador administrador= null;
 
         if (log.isDebugEnabled()) {
             log.debug(">buscarPorID(" + idAdministrador + ", " + bloquear + ")");
@@ -35,14 +35,14 @@ public class AdministradorDAO {
 
         try {
             if (bloquear) {
-                auto = (Auto)HibernateUtil.getSession()
-                                                .load(Auto.class, 
-                                                      idAuto, 
+                administrador= (Administrador)HibernateUtil.getSession()
+                                                .load(Administrador.class, 
+                                                      idAdministrador, 
                                                       LockMode.UPGRADE);
             } else {
-                auto = (Auto)HibernateUtil.getSession()
-                                                .load(Auto.class,
-                                                      idAuto);
+                administrador= (Administrador)HibernateUtil.getSession()
+                                                .load(Administrador.class,
+                                                      idAdministrador);
             }
         } catch (HibernateException ex) {
             if (log.isWarnEnabled()) {
@@ -84,7 +84,7 @@ public class AdministradorDAO {
             throws ExcepcionInfraestructura {
 
 
-        Collection autos;
+        Collection administradores;
  
         if (log.isDebugEnabled()) {
             log.debug(">buscarPorEjemplo()");
