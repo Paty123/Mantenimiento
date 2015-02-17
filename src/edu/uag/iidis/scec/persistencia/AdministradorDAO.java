@@ -51,68 +51,22 @@ public class AdministradorDAO {
 
             throw new ExcepcionInfraestructura(ex);
         }
-        return administrador;
+        return administradores;
     }
 
 
-    public Collection buscarTodos()
-            throws ExcepcionInfraestructura {
-
-        Collection autos;
-
-        if (log.isDebugEnabled()) {
-            log.debug(">buscarTodos()");
-        }
-
-        try {
-            autos = HibernateUtil.getSession()
-                                    .createCriteria(Auto.class)
-                                    .list();
-									
-			  log.debug(">buscarTodos() ---- list	");									
-        } catch (HibernateException e) {
-            if (log.isWarnEnabled()) {
-                log.warn("<HibernateException");
-            }
-            throw new ExcepcionInfraestructura(e);
-        }
-        return autos;
-    }
+    
 
 
-    public Collection buscarPorEjemplo(Auto auto)
-            throws ExcepcionInfraestructura {
-
-
-        Collection administradores;
- 
-        if (log.isDebugEnabled()) {
-            log.debug(">buscarPorEjemplo()");
-        }
-
-        try {
-            Criteria criteria = HibernateUtil.getSession()
-                                             .createCriteria(Auto.class);
-            autos = criteria.add(Example.create(auto)).list();
-        } catch (HibernateException e) {
-            if (log.isWarnEnabled()) {
-                log.warn("<HibernateException");
-            }
-            throw new ExcepcionInfraestructura(e);
-        }
-        return autos;
-    }
-
-
-    public void hazPersistente(Auto auto)
+    public void hazPersistente(Administrador administrador)
             throws ExcepcionInfraestructura {
 
         if (log.isDebugEnabled()) {
-            log.debug(">hazPersistente(auto)");
+            log.debug(">hazPersistente(administrador)");
         }
 
         try {
-            HibernateUtil.getSession().saveOrUpdate(auto);
+            HibernateUtil.getSession().saveOrUpdate(administrador);
         } catch (HibernateException e) {
             if (log.isWarnEnabled()) {
                 log.warn("<HibernateException");
