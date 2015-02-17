@@ -1,5 +1,5 @@
 	<!-- Inicio Sección - Pie de Página -->
-	<!-- Inicio Seccion - Barra Menu Pie de Página -->
+	<!-- Inicio Seccion - Barra Menu Pie de Página --><meta charset="UTF-8">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 	<section class="footer">
 		Acerca de | Ayuda | Hacer Recomendación | Reportar Problema
