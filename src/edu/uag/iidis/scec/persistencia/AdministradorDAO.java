@@ -18,7 +18,7 @@ import java.util.List;
 
 public class AdministradorDAO {
 
-    private Log log = LogFactory.getLog(AutoDAO.class);
+    private Log log = LogFactory.getLog(AdministradorDAO.class);
 
     public AdministradorDAO() {
     }
@@ -30,7 +30,7 @@ public class AdministradorDAO {
         Auto auto = null;
 
         if (log.isDebugEnabled()) {
-            log.debug(">buscarPorID(" + idAuto + ", " + bloquear + ")");
+            log.debug(">buscarPorID(" + idAdministrador + ", " + bloquear + ")");
         }
 
         try {
