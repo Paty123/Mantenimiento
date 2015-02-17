@@ -20,7 +20,7 @@ import org.apache.struts.actions.MappingDispatchAction;
 
 
 
-public final class MCUListarAutos 
+public final class MCUListarAutos
         extends MappingDispatchAction {
 
     private Log log = LogFactory.getLog(MCURegistrarUsuario.class);
@@ -50,13 +50,10 @@ public final class MCUListarAutos
         ManejadorAutos mr = new ManejadorAutos();
         Collection resultado = mr.listarAutos();
 
-
-
         ManejadorCiudades mr2 = new ManejadorCiudades();
         Collection resultado2 = mr2.listarCiudades();
 
         forma.setCiudades( resultado2 );
-
 
         ActionMessages errores = new ActionMessages();
         if (resultado != null) {
