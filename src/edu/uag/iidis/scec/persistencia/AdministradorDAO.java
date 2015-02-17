@@ -76,15 +76,15 @@ public class AdministradorDAO {
     }
 
 
-    public void hazTransitorio(Auto auto)
+    public void hazTransitorio(Administrador administrador)
             throws ExcepcionInfraestructura {
 
         if (log.isDebugEnabled()) {
-            log.debug(">hazTransitorio(auto)");
+            log.debug(">hazTransitorio(administrador)");
         }
 
         try {
-            HibernateUtil.getSession().delete(auto);
+            HibernateUtil.getSession().delete(administrador);
         } catch (HibernateException e) {
             if (log.isWarnEnabled()) {
                 log.warn("<HibernateException");
