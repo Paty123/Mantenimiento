@@ -50,6 +50,65 @@ public final class MCUListarAutos
         ManejadorAutos mr = new ManejadorAutos();
         Collection resultado = mr.listarAutos();
 
+        
+
+
+        ActionMessages errores = new ActionMessages();
+        if (resultado != null) {
+            if ( resultado.isEmpty() ) {
+                errores.add(ActionMessages.GLOBAL_MESSAGE,
+                    new ActionMessage("errors.registroVacio"));
+                saveErrors(request, errores);
+            } else {
+                forma.setAutos( resultado );
+            }
+            return (mapping.findForward("exito"));
+        } else {
+            log.error("Ocurrió un error de infraestructura");
+            errores.add(ActionMessages.GLOBAL_MESSAGE,
+                        new ActionMessage("errors.infraestructura"));                
+            saveErrors(request, errores);
+            return ( mapping.findForward("fracaso") );
+        }
+
+    }
+
+    public ActionForward ListarAutosOrd(
+                ActionMapping mapping,
+                ActionForm form,
+                HttpServletRequest request,
+                HttpServletResponse response)
+            throws Exception {
+
+       // FormaListadoAutosOrdenar forma = (FormaListadoAutosOrdenar)form;
+
+       // ManejadorAutos mr = new ManejadorAutos();
+
+        if (log.isDebugEnabled()) {
+            log.debug(">Listado de Autos");
+        }
+
+// Verifica si la acción fue cancelada por el usuario
+        if (isCancelled(request)) {
+            if (log.isDebugEnabled()) {
+                log.debug("<La acción fue cancelada");
+            }
+            return (mapping.findForward("cancelar"));
+        }
+                 
+
+
+             String datos=request.getParameter("Datos").toString();
+                 
+
+
+       
+
+        ManejadorAutos mr= new ManejadorAutos();
+        Collection resultado = mr.ListarAutosOrd(datos);
+
+        
+
         ActionMessages errores = new ActionMessages();
         if (resultado != null) {
             if ( resultado.isEmpty() ) {
@@ -70,4 +129,3 @@ public final class MCUListarAutos
 
     }
 }
-

@@ -39,7 +39,7 @@ public class ManejadorAutos {
         }
     }
 
-    public Collection listarAutosOrd(String tipo, int tipoInt) {
+    public Collection listarAutosOrd(String datos) {
 
         Collection resultado;
 
@@ -49,7 +49,7 @@ public class ManejadorAutos {
 
         try {
             HibernateUtil.beginTransaction();
-            resultado = dao.ordenarPor(tipo, tipoInt);
+            resultado = dao.ordenarPor(datos);
             HibernateUtil.commitTransaction();
             return resultado;         
         } catch (ExcepcionInfraestructura e) {

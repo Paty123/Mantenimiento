@@ -195,18 +195,17 @@ public class AutoDAO {
             throw new ExcepcionInfraestructura(ex);
         }
     }
-    public Collection ordenarPor(String tipo, int tipoInt)
+    public Collection ordenarPor(String datos)
             throws ExcepcionInfraestructura {
 
-        Collection ciudades;
-
-        if (log.isDebugEnabled()) {
+List resultadosdatos;
+if (log.isDebugEnabled()) {
             log.debug(">existeRol(nombreRol)");
         }
         String add="";
-        if (tipoInt==0) {
+        if (datos==0) {
             add="ASC";
-        } else if(tipoInt==1) {
+        } else if(datos==1) {
             add="DESC";
         }
         try {
@@ -246,6 +245,8 @@ public class AutoDAO {
             }
             throw new ExcepcionInfraestructura(ex);
         }
+
+        return resultadosdatos;
     }
 
 }
