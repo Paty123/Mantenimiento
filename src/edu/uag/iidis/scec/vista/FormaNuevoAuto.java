@@ -23,7 +23,7 @@ public final class FormaNuevoAuto
     private String color;
     private String placas;
     private String propietario;
-    private Long idCiudad;
+    private String ciudad;
 
 
     public void setCiudades(Collection ciudades) {
@@ -71,19 +71,19 @@ public final class FormaNuevoAuto
         return (this.propietario);
     }
 
-    public void setidCiudad(Long id) {
-        this.idCiudad = id;
+    public void setCiudad(String  ciudad) {
+        this.ciudad = ciudad;
     }
 
-    public Long getidCiudad() {
-        return (this.idCiudad);
+    public Long getCiudad() {
+        return (this.ciudad);
     }
 
     public void reset(ActionMapping mapping,
                       HttpServletRequest request) {
         marca=null;
         color=null;
-        idCiudad=null;
+        ciudad=null;
         placas=null;
         propietario=null;
     }
