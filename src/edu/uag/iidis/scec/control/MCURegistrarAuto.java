@@ -112,7 +112,7 @@ public final class MCURegistrarAuto
                           forma.getColor(), 
                           forma.getPlacas(), 
                           forma.getPropietario(), 
-                          forma.getidCiudad());
+                          forma.getCiudad());
 
         ManejadorAutos mr = new ManejadorAutos();
         int resultado = mr.crearAuto(rol);

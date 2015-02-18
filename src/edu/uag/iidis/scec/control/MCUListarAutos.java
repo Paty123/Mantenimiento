@@ -57,7 +57,7 @@ public final class MCUListarAutos
                     new ActionMessage("errors.registroVacio"));
                 saveErrors(request, errores);
             } else {
-                forma.setPersonas( resultado );
+                forma.setAutos( resultado );
             }
             return (mapping.findForward("exito"));
         } else {
