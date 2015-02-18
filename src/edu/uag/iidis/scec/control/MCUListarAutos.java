@@ -20,7 +20,7 @@ import org.apache.struts.actions.MappingDispatchAction;
 
 
 
-public final class MCUListarAutos
+public final class MCUListarAutos 
         extends MappingDispatchAction {
 
     private Log log = LogFactory.getLog(MCURegistrarUsuario.class);
@@ -50,11 +50,6 @@ public final class MCUListarAutos
         ManejadorAutos mr = new ManejadorAutos();
         Collection resultado = mr.listarAutos();
 
-        ManejadorCiudades mr2 = new ManejadorCiudades();
-        Collection resultado2 = mr2.listarCiudades();
-
-        forma.setCiudades( resultado2 );
-
         ActionMessages errores = new ActionMessages();
         if (resultado != null) {
             if ( resultado.isEmpty() ) {
@@ -62,49 +57,7 @@ public final class MCUListarAutos
                     new ActionMessage("errors.registroVacio"));
                 saveErrors(request, errores);
             } else {
-                forma.setAutos( resultado );
-            }
-            return (mapping.findForward("exito"));
-        } else {
-            log.error("Ocurrió un error de infraestructura");
-            errores.add(ActionMessages.GLOBAL_MESSAGE,
-                        new ActionMessage("errors.infraestructura"));                
-            saveErrors(request, errores);
-            return ( mapping.findForward("fracaso") );
-        }
-
-    }
-
-    public ActionForward solicitarOrdMarca(
-                ActionMapping mapping,
-                ActionForm form,
-                HttpServletRequest request,
-                HttpServletResponse response)
-            throws Exception {
-
-        FormaListadoAutosOrdenar forma = (FormaListadoAutosOrdenar)form;
-
-        ManejadorAutos mr = new ManejadorAutos();
-
-        if (log.isDebugEnabled()) {
-            log.debug(">var1: "+forma.getOrdenar()+" >var2: "+forma.getTipo());
-        }
-
-        Collection resultado = mr.listarAutosOrd(forma.getOrdenar(), forma.getTipo());
-
-        ManejadorCiudades mr2 = new ManejadorCiudades();
-        Collection resultado2 = mr2.listarCiudades();
-
-        forma.setCiudades( resultado2 );
-
-        ActionMessages errores = new ActionMessages();
-        if (resultado != null) {
-            if ( resultado.isEmpty() ) {
-                errores.add(ActionMessages.GLOBAL_MESSAGE,
-                    new ActionMessage("errors.registroVacio"));
-                saveErrors(request, errores);
-            } else {
-                forma.setAutos( resultado );
+                forma.setPersonas( resultado );
             }
             return (mapping.findForward("exito"));
         } else {
@@ -117,3 +70,4 @@ public final class MCUListarAutos
 
     }
 }
+

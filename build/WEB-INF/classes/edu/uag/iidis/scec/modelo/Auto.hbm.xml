@@ -13,22 +13,22 @@
             <generator class="increment">
             </generator>
         </id>
-        <property name="idCiudad"
+        <property name="idciudad"
             type="java.lang.Long"
             not-null="true" />
         
-        <property name="Marca"
+        <property name="marca"
             type="java.lang.String"
             not-null="true" />
 
-        <property name="Color"
+        <property name="color"
             type="java.lang.String"
             not-null="true" />
 
-        <property name="Placas"
+        <property name="placas"
             type="java.lang.String" />
 
-        <property name="Propietario"
+        <property name="propietario"
             type="java.lang.String" />
             
       <!--  <property name="claveAcceso"
