@@ -17,11 +17,12 @@ public class Auto extends ClaseBase
         implements Serializable {
 
     private Long id;
-    private Long idCiudad;
+   
     private String marca;
     private String color;
     private String placas;
     private String propietario;
+    private String ciudad;
     //private String claveAcceso;
 
     public Auto() {
@@ -31,12 +32,13 @@ public class Auto extends ClaseBase
         this.id = id;
     }
 
-    public Auto(String marca, String color, String placas, String propietario, Long idCiudad){
+    public Auto(String marca, String color, String placas, String propietario, String ciudad){
         this.marca=marca;
         this.color=color;
-        this.idCiudad=idCiudad;
+       
         this.placas=placas;
         this.propietario=propietario;
+         this.ciudad=ciudad;
     }
 
     /**
@@ -52,12 +54,12 @@ public class Auto extends ClaseBase
     }
 
     // ID Ciudad
-    public Long getidCiudad() {
-        return this.idCiudad;
+    public Long getCiudad() {
+        return this.ciudad;
     }
 
-    public void setidCiudad(Long idCiudad) {
-        this.idCiudad = idCiudad;
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
     }
     /**
      * Regresa el nombres del rol.

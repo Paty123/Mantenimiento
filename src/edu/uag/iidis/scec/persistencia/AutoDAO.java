@@ -161,7 +161,7 @@ public class AutoDAO {
  //                          .next()).intValue();
 // de acuerdo al nuevo formato
  
-			String hql = "select Marca from Autos where marca =:marca";
+			String hql = "select marca from Autos where marca =:marca";
 			
 			 if (log.isDebugEnabled()) {
            		 log.debug(hql + nombreAuto);
@@ -173,7 +173,7 @@ public class AutoDAO {
            		 log.debug("<<<<<<<<< create query ok " );
         	}
 
-			query.setParameter("Marca", nombreAuto);
+			query.setParameter("marca", nombreAuto);
 			if (log.isDebugEnabled()) {
            		 log.debug("<<<<<<<<< set Parameter ok antes del query list >>>>>");
         	}
@@ -210,17 +210,17 @@ public class AutoDAO {
             add="DESC";
         }
         try {
-            String hql="from Auto";
+            String hql="from autos";
             if(tipo.equals("marca")) {
-                hql = "from Auto order by Marca "+add;
+                hql = "from autos order by marca "+add;
             } else if(tipo.equals("color")) {
-                hql = "from Auto order by Color "+add;
+                hql = "from autos order by color "+add;
             } else if(tipo.equals("placas")) {
-                hql = "from Auto order by Placas "+add;
+                hql = "from autos order by placas "+add;
             } else if(tipo.equals("propietario")) {
-                hql = "from Auto order by Propiedad "+add;
+                hql = "from autos order by propietario "+add;
             } else if(tipo.equals("ciudad")) {
-                hql = "from Auto order by idCiudad "+add;
+                hql = "from autos order by ciudad"+add;
             } 
             
              if (log.isDebugEnabled()) {

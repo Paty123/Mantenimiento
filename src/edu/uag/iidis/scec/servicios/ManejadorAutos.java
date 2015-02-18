@@ -11,7 +11,7 @@ import edu.uag.iidis.scec.persistencia.AutoDAO;
 import edu.uag.iidis.scec.persistencia.hibernate.*;
 
 public class ManejadorAutos {
-    private Log log = LogFactory.getLog(ManejadorRoles.class);
+    private Log log = LogFactory.getLog(ManejadorAutos.class);
     private AutoDAO dao;
 
     public ManejadorAutos() {
@@ -62,7 +62,7 @@ public class ManejadorAutos {
 
     public void eliminarAuto(Long id) {
         if (log.isDebugEnabled()) {
-            log.debug(">eliminarGente(auto)");
+            log.debug(">eliminarAuto(auto)");
         }
         try {
             HibernateUtil.beginTransaction();           
