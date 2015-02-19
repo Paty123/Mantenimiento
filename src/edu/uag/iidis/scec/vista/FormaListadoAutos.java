@@ -17,21 +17,21 @@ import org.apache.struts.validator.ValidatorForm;
 public final class FormaListadoAutos
         extends ValidatorForm {
 
-    private Collection ciudades;
+    private Collection estados;
     private int contador2;
     private Collection autos;
     private int contador;
 
-    public void setCiudades(Collection ciudades) {
-        this.ciudades = ciudades;
-        if (ciudades != null) {
-          this.contador2 = ciudades.size();
+    public void setEstados(Collection estados) {
+        this.estados = estados;
+        if (estados != null) {
+          this.contador2 = estados.size();
         } else
           this.contador2 = -1;
     }
 
-    public Collection getCiudades() {
-        return (this.ciudades);
+    public Collection getEstados() {
+        return (this.estados);
     }
 
     public void setAutos(Collection autos) {
@@ -56,7 +56,7 @@ public final class FormaListadoAutos
         contador=0;
         autos=null;
         contador2=0;
-        ciudades=null;
+        estados=null;
     }
 
 

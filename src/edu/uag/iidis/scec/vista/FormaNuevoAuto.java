@@ -17,25 +17,26 @@ import org.apache.struts.validator.ValidatorForm;
 public final class FormaNuevoAuto
         extends ValidatorForm {
 
-    private Collection ciudades;
+    private Collection estados;
     private int contador;
     private String marca;
     private String color;
-    private String placas;
+     private String placas;
     private String propietario;
     private String ciudad;
+    private Long idEstado;
 
 
-    public void setCiudades(Collection ciudades) {
-        this.ciudades = ciudades;
-        if (ciudades != null) {
-          this.contador = ciudades.size();
+    public void setEstados(Collection estados) {
+        this.estados = estados;
+        if (estados != null) {
+          this.contador = estados.size();
         } else
           this.contador = -1;
     }
 
-    public Collection getCiudades() {
-        return (this.ciudades);
+    public Collection getEstados() {
+        return (this.estados);
     }
 
     public void setMarca(String marca) {
@@ -48,12 +49,13 @@ public final class FormaNuevoAuto
 
 
     public void setColor(String color) {
-        this.color= color;
+        this.color = color;
     }
 
     public String getColor() {
         return (this.color);
     }
+
 
     public void setPlacas(String placas) {
         this.placas = placas;
@@ -63,29 +65,40 @@ public final class FormaNuevoAuto
         return (this.placas);
     }
 
+
     public void setPropietario(String propietario) {
         this.propietario = propietario;
     }
 
     public String getPropietario() {
-        return (this.propietario);
+        return (this.color);
     }
 
-    public void setCiudad(String  ciudad) {
+
+    public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
     }
 
-    public Long getCiudad() {
+    public String getCiudad() {
         return (this.ciudad);
+    }
+
+    public void setidEstado(Long id) {
+        this.idEstado = id;
+    }
+
+    public Long getidEstado() {
+        return (this.idEstado);
     }
 
     public void reset(ActionMapping mapping,
                       HttpServletRequest request) {
         marca=null;
         color=null;
-        ciudad=null;
         placas=null;
         propietario=null;
+        ciudad=null;
+        idEstado=null;
     }
 
 

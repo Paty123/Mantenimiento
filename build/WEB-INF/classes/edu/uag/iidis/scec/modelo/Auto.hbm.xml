@@ -2,34 +2,47 @@
 
 <hibernate-mapping>
     <class name="edu.uag.iidis.scec.modelo.Auto"
-           table="Autos"
+           table="autos"
            dynamic-update="false"
            dynamic-insert="false">
 
         <id name="id"
-            column="idAutos"
+            column="idautos"
             type="java.lang.Long"
             unsaved-value="null" >
             <generator class="increment">
             </generator>
         </id>
-        <property name="idciudad"
-            type="java.lang.Long"
-            not-null="true" />
+        
         
         <property name="marca"
             type="java.lang.String"
-            not-null="true" />
+            not-null="true" 
+            unique="true"
+            />
 
         <property name="color"
             type="java.lang.String"
-            not-null="true" />
+            not-null="true" 
+            unique="true"
+            />
 
         <property name="placas"
-            type="java.lang.String" />
+            type="java.lang.String"
+            not-null="true" 
+            unique="true"
+            />
 
         <property name="propietario"
-            type="java.lang.String" />
+            type="java.lang.String"
+            not-null="true" 
+            unique="true"
+            />
+        <property name="ciudad"
+            type="java.lang.String"
+            not-null="true" 
+            unique="true"
+            />
             
       <!--  <property name="claveAcceso"
             type="java.lang.String" />-->

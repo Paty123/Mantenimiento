@@ -19,13 +19,61 @@
   }
 -->
 </script>
+
+
+<script type="text/javascript" src="js/jquery,js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function()
+
+{
+
+  $('body').on('click','ordena',function(){
+
+    alert($(this).children().html());
+    if(valor==="marca"){
+
+      valor="marca";
+    }
+  
+  $.ajax({
+
+    type:"post",url:'solicitarListarAutosOrdenados.do?resultadosObtenidos='+valor,dataType:"html", success:function(data){
+
+      alert(data);
+      $('.contenedor').html(data);
+    },error:function (xhr,status,error){
+      alert(xhr.responseText);
+    }
+    
+  });
+
+
+});
+
+});
+
+</script>
+
+
+
+
+
+
     <br>
     <font size='5'><fmt:message key="formaListadoAutos.titulo" /></font>
    
       <div class="table" style="width:100%"  id="tablecontent">
           <div class="tr">
               <div class="td" colspan="4" style="padding-top:25px; padding-bottom:25px;">
-                  <a href="solicitarRegistroAuto.do" class="HipervinculoAdmon boton">Agregar nueva Auto...</a>
+            
+
+
+<div class="contenedor">
+  <h4>Reporte de Autos Agregados</h4>
+
+             <a href="solicitarRegistroAuto.do" class="HipervinculoAdmon boton">Agregar nueva Auto...</a>
               </div>
           </div>
           <div class="tr">
@@ -42,16 +90,16 @@
            
            <div class="td"  style="width:16%"><b><fmt:message key="formaListadoAutos.etiqueta.administracion" /></b></div>
           </div>
-          <c:forEach var="gente" items="${formaListadoAutos.autos}">
+          <c:forEach var="auto" items="${formaListadoAutos.autos}">
               <div class="tr">
                   <div class="td" align="left" style="width:16%"><c:out value="${auto.marca}"/></div>
                   <div class="td" align="left" style="width:16%"><c:out value="${auto.color}"/></div>
                   <div class="td" align="left" style="width:16%"><c:out value="${auto.placas}"/></div>
                   <div class="td" align="left" style="width:16%"><c:out value="${auto.propietario}"/></div>
                   <div class="td" align="left" style="width:16%">
-                    <c:forEach var="ciudad" items="${formaListadoAutos.ciudades}">
-                      <c:if test="${ciudad.id == auto.idCiudad}">
-                        <c:out value="${ciudad.nombre}"/>
+                    <c:forEach var="auto" items="${formaListadoAutos.autos}">
+                      <c:if test="${auto.id == auto.id}">
+                        <c:out value="${auto.marca}"/>
                       </c:if>
                     </c:forEach>
                     
@@ -62,7 +110,7 @@
                           <fmt:message key="formaListadoAutos.etiqueta.modificar" />
                       </a>
                       <a href='procesarEliminarAuto.do?id=<c:out value="${auto.id}"/>'
-               onClick="javascript: return EliminarAuto('<c:out value="${auto.marca}"/>')"
+               onClick="javascript: return EliminarAuto('<c:out value="${auto.marca}"/>');
                class="HipervinculoAdmon">
                           <fmt:message key="formaListadoAutos.etiqueta.eliminar" />
                       </a>
@@ -73,4 +121,4 @@
               <div class="td" colspan="4" align="right" style="padding-top:25px;"><b>Total:</b> ${formaListadoAutos.contador}</div>
           </div>
       </div>
-      
+      </div>

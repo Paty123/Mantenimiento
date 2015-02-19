@@ -53,14 +53,7 @@ public class Auto extends ClaseBase
         this.id = id;
     }
 
-    // ID Ciudad
-    public Long getCiudad() {
-        return this.ciudad;
-    }
-
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
-    }
+    
     /**
      * Regresa el nombres del rol.
      * @return String
@@ -105,6 +98,19 @@ public class Auto extends ClaseBase
     public void setPropietario(String propietario) {
         this.propietario = propietario;
     }
+
+
+// ID Ciudad
+    public String getCiudad() {
+        return this.ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+
+    
    /* public String getclaveAcceso() {
         return this.claveAcceso;
     }

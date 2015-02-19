@@ -33,13 +33,12 @@ public final class MCURegistrarAuto
                 HttpServletResponse response)
             throws Exception {
 
-/////////////////////////////////////////////////////////
-       FormaNuevoAuto forma = (FormaNuevoAuto)form;
+       // FormaNuevoAuto forma = (FormaNuevoAuto)form;
 
-        ManejadorCiudades mr = new ManejadorCiudades();
-       Collection resultado = mr.listarCiudades();
+       // ManejadorEstados mr = new ManejadorEstados();
+       // Collection resultado = mr.listarEstados();
 
-       forma.setCiudades( resultado );
+     //   forma.setEstados( resultado );
 
         if (log.isDebugEnabled()) {
             log.debug(">solicitarRegistroAuto");
@@ -48,41 +47,6 @@ public final class MCURegistrarAuto
         return (mapping.findForward("exito"));
     }
 
-
-
-
-
-
-
-
-    public ActionForward procesarRegistroAutoCiudades(
-                ActionMapping mapping,
-                ActionForm form,
-                HttpServletRequest request,
-                HttpServletResponse response)
-            throws Exception {
-
-        FormaNuevoAutoCiudades forma = (FormaNuevoAutoCiudades)form;
-
-        ManejadorCiudades mr = new ManejadorCiudades();
-        if (log.isDebugEnabled()) {
-            log.debug(">solicitarRegistroAutoCiudades: buscando:"+forma.getciudadBuscar());
-        }
-        Collection resultado = mr.buscarCiudades(forma.getciudadBuscar());
-
-        forma.setCiudades( resultado );
-
-        ManejadorEstados mr2 = new ManejadorEstados();
-        Collection resultado2 = mr2.listarEstados();
-
-        forma.setEstados( resultado2 );
-
-        if (log.isDebugEnabled()) {
-            log.debug(">solicitarRegistroAutoCiudades");
-        }
-
-        return (mapping.findForward("exito"));
-    }
 
 
     public ActionForward procesarRegistroAuto(
@@ -108,14 +72,10 @@ public final class MCURegistrarAuto
         // Se obtienen los datos para procesar el registro
         FormaNuevoAuto forma = (FormaNuevoAuto)form;
 
-        Auto rol = new Auto(forma.getMarca(),
-                          forma.getColor(), 
-                          forma.getPlacas(), 
-                          forma.getPropietario(), 
-                          forma.getCiudad());
+        Auto auto = new Auto(forma.getMarca(),forma.getColor(), forma.getPlacas(),forma.getPropietario(),forma.getCiudad());
 
         ManejadorAutos mr = new ManejadorAutos();
-        int resultado = mr.crearAuto(rol);
+        int resultado = mr.crearAuto(auto);
 
         ActionMessages errores = new ActionMessages();
         switch (resultado) {

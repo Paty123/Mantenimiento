@@ -1,4 +1,4 @@
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ taglib uri="http://java.sun.com/jstl/fmt" prefix="fmt" %>
     <%@ taglib uri="/WEB-INF/vista/etiquetas/struts-html.tld" prefix="html" %>
 
@@ -36,65 +36,50 @@
                            maxlength="100" 
                            value="${formaNuevoAuto.color}" />
                 </div>
-            </div>
-            <div class="tr">
+
+<div class="tr">
                 <div class="td" align="right">
                     <fmt:message key="formaNuevoAuto.etiqueta.placas" />
                 </div>
                 <div class="td" align="left">
                     <input type="text" 
-                           name="placas" 
+                           name="color" 
                            size="50" 
                            maxlength="100" 
                            value="${formaNuevoAuto.placas}" />
                 </div>
-            </div>
-            <div class="tr">
+
+
+<div class="tr">
                 <div class="td" align="right">
                     <fmt:message key="formaNuevoAuto.etiqueta.propietario" />
                 </div>
                 <div class="td" align="left">
                     <input type="text" 
-                           name="propietario" 
+                           name="color" 
                            size="50" 
                            maxlength="100" 
                            value="${formaNuevoAuto.propietario}" />
                 </div>
-            </div>
-            <div class="tr">
-                <div class="td" align="right">
-                    <fmt:message key="formaNuevoAuto.etiqueta.ciudad" />
-                </div>
-                <div class="td" align="left" style="position:relative">
-                    <input type="text" 
-                           id ="ciudadBuscar" autocomplete="off" />
-                    <div class="buscar">
-                      <ul>
-                      </ul>
-                    </div>
-                    <input type="text" 
-                           id="idCiudad"
-                           name="idCiudad" 
-                           size="50" 
-                           style="display:none"
-                           maxlength="100" />
-                  <!--
-                    <select name="idCiudad" >
-                      <c:forEach var="ciudad" items="${formaNuevoGente.ciudades}">
-                        <option value='<c:out value="${ciudad.id}" />'><c:out value="${ciudad.nombre}" /></option>
-                      </c:forEach>
-                    </select>
-                  -->
-                </div>
+
+
+
+
+
             </div>
             <div class="tr">
                 <div class="td" align="right">
                     <fmt:message key="formaNuevoAuto.etiqueta.estado" />
                 </div>
-                <div class="td" align="left" style="position:relative">
-                    <div id="estadoNombre"></div>
+                <div class="td" align="left">
+                    <select name="idEstado" >
+                      <c:forEach var="estado" items="${formaNuevoAuto.estados}">
+                        <option value='<c:out value="${estado.id}" />'><c:out value="${estado.nombre}" /></option>
+                      </c:forEach>
+                    </select>
                 </div>
             </div>
+                  
             <div class="tr">
                 <div class="td" style="width:400px;" align="center">
                     <input type="submit" 

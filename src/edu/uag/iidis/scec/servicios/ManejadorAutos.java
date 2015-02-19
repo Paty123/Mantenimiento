@@ -11,7 +11,7 @@ import edu.uag.iidis.scec.persistencia.AutoDAO;
 import edu.uag.iidis.scec.persistencia.hibernate.*;
 
 public class ManejadorAutos {
-    private Log log = LogFactory.getLog(ManejadorAutos.class);
+    private Log log = LogFactory.getLog(ManejadorRoles.class);
     private AutoDAO dao;
 
     public ManejadorAutos() {
@@ -39,8 +39,15 @@ public class ManejadorAutos {
         }
     }
 
-    public Collection listarAutosOrd(String datos) {
 
+
+
+
+
+
+/////////////////////Metodo listar ordenados////////////////
+
+public Collection listarAutosOrdenados(String resultadoOrdenados) {
         Collection resultado;
 
         if (log.isDebugEnabled()) {
@@ -49,7 +56,36 @@ public class ManejadorAutos {
 
         try {
             HibernateUtil.beginTransaction();
-            resultado = dao.ordenarPor(datos);
+            resultado = dao.buscarTodosOrdenados(resultadoOrdenados);
+            HibernateUtil.commitTransaction();
+            return resultado;         
+        } catch (ExcepcionInfraestructura e) {
+            HibernateUtil.rollbackTransaction();
+            return null;
+        } finally {
+            HibernateUtil.closeSession();
+        }
+    }
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////
+
+
+
+    public Collection buscarAuto(String autoBuscar) {
+        Collection resultado;
+
+        if (log.isDebugEnabled()) {
+            log.debug(">guardarUsuario(usuario)");
+        }
+
+        try {
+            HibernateUtil.beginTransaction();
+            resultado = dao.buscarPorMarca(autoBuscar);
             HibernateUtil.commitTransaction();
             return resultado;         
         } catch (ExcepcionInfraestructura e) {
@@ -67,7 +103,7 @@ public class ManejadorAutos {
         try {
             HibernateUtil.beginTransaction();           
             Auto auto = dao.buscarPorId(id, true);
-            if (auto!= null) {
+            if (auto != null) {
               dao.hazTransitorio(auto);
             }
             HibernateUtil.commitTransaction();
@@ -87,19 +123,19 @@ public class ManejadorAutos {
         int resultado;
 
         if (log.isDebugEnabled()) {
-            log.debug(">guardarAuto(Auto)");
+            log.debug(">guardarAuto(auto)");
         }
 
         try {
             HibernateUtil.beginTransaction();           
             
             if (dao.existeAuto(auto.getMarca())) {
-               resultado = 1; // Excepción. El nombre de gente ya existe
+               resultado = 1; // Excepción. El nombre de ciudad ya existe
             } else {
 
                dao.hazPersistente(auto);
 
-               resultado = 0; // Exito. El gente se creo satisfactoriamente.
+               resultado = 0; // Exito. El ciudad se creo satisfactoriamente.
             }
 
             HibernateUtil.commitTransaction();

@@ -68,8 +68,8 @@ public class AutoDAO {
             autos = HibernateUtil.getSession()
                                     .createCriteria(Auto.class)
                                     .list();
-									
-			  log.debug(">buscarTodos() ---- list	");									
+                                    
+              log.debug(">buscarTodos() ---- list   ");                                 
         } catch (HibernateException e) {
             if (log.isWarnEnabled()) {
                 log.warn("<HibernateException");
@@ -138,19 +138,58 @@ public class AutoDAO {
             throw new ExcepcionInfraestructura(e);
         }
     }
-
-    public boolean existeAuto(String nombreAuto)
+    public Collection buscarPorMarca(String marcaAuto)
             throws ExcepcionInfraestructura {
+
+        Collection autos;
 
         if (log.isDebugEnabled()) {
             log.debug(">existeRol(nombreRol)");
         }
 
         try {
-			
-			
+            
+            String hql = "from Marca where marca:marca";
+            
+             if (log.isDebugEnabled()) {
+                 log.debug(hql + marcaAuto);
+            }
+        
+            Query query = HibernateUtil.getSession()
+                                        .createQuery(hql);
+            if (log.isDebugEnabled()) {
+                 log.debug("<<<<<<<<< create query ok " );
+            }
+
+            query.setParameter("Marca", "%"+marcaAuto+"%");
+
+            if (log.isDebugEnabled()) {
+                 log.debug("<<<<<<<<< set Parameter ok antes del query list >>>>>");
+            }
+            autos = query.list();
+
+            return autos;
+
+        } catch (HibernateException ex) {
+            if (log.isWarnEnabled()) {
+                log.warn("<HibernateException *******************");
+            }
+            throw new ExcepcionInfraestructura(ex);
+        }
+    }
+
+    public boolean existeAuto(String marcaAuto)
+            throws ExcepcionInfraestructura {
+
+        if (log.isDebugEnabled()) {
+            log.debug(">existeAuto(marcaAuto)");
+        }
+
+        try {
+            
+            
 //            String consultaCuentaRoles =
-//            "select count(*) from Gente r where r.nombre=?";
+//            "select count(*) from Ciudad r where r.nombre=?";
 //
  //           int resultado =
  //           ((Integer) HibernateUtil.getSession()
@@ -161,27 +200,27 @@ public class AutoDAO {
  //                          .next()).intValue();
 // de acuerdo al nuevo formato
  
-			String hql = "select marca from Autos where marca =:marca";
-			
-			 if (log.isDebugEnabled()) {
-           		 log.debug(hql + nombreAuto);
-        	}
-		
-			Query query = HibernateUtil.getSession()
-										.createQuery(hql);
-			if (log.isDebugEnabled()) {
-           		 log.debug("<<<<<<<<< create query ok " );
-        	}
+            String hql = "select Marca from Autos where marca= :marca";
+            
+             if (log.isDebugEnabled()) {
+                 log.debug(hql + marcaAuto);
+            }
+        
+            Query query = HibernateUtil.getSession()
+                                        .createQuery(hql);
+            if (log.isDebugEnabled()) {
+                 log.debug("<<<<<<<<< create query ok " );
+            }
 
-			query.setParameter("marca", nombreAuto);
-			if (log.isDebugEnabled()) {
-           		 log.debug("<<<<<<<<< set Parameter ok antes del query list >>>>>");
-        	}
-			List results = query.list();
-			int resultado = results.size();
-			if (log.isDebugEnabled()) {
-           		 log.debug("<<<<<<<<< Result size " + resultado);
-        	}
+            query.setParameter("Marca", marcaAuto);
+            if (log.isDebugEnabled()) {
+                 log.debug("<<<<<<<<< set Parameter ok antes del query list >>>>>");
+            }
+            List results = query.list();
+            int resultado = results.size();
+            if (log.isDebugEnabled()) {
+                 log.debug("<<<<<<<<< Result size " + resultado);
+            }
             if (resultado == 0) {
                return false;
             }
@@ -195,49 +234,45 @@ public class AutoDAO {
             throw new ExcepcionInfraestructura(ex);
         }
     }
-    public Collection ordenarPor(String datos)
+
+
+
+///////////////////////////////METODO/////////////////////////
+    public Collection buscarTodosOrdenados(String resultadosOrdenados)
             throws ExcepcionInfraestructura {
 
-List resultadosdatos;
-if (log.isDebugEnabled()) {
-            log.debug(">existeRol(nombreRol)");
+List results;
+        if (log.isDebugEnabled()) {
+            log.debug(">existeMarca(marcaAuto)");
         }
-        String add="";
-        if (datos==0) {
-            add="ASC";
-        } else if(datos==1) {
-            add="DESC";
-        }
+
         try {
-            String hql="from autos";
-            if(tipo.equals("marca")) {
-                hql = "from autos order by marca "+add;
-            } else if(tipo.equals("color")) {
-                hql = "from autos order by color "+add;
-            } else if(tipo.equals("placas")) {
-                hql = "from autos order by placas "+add;
-            } else if(tipo.equals("propietario")) {
-                hql = "from autos order by propietario "+add;
-            } else if(tipo.equals("ciudad")) {
-                hql = "from autos order by ciudad"+add;
-            } 
+            
+            
+
+ 
+            String bsql = " from Autos order by "+resultadosOrdenados;
             
              if (log.isDebugEnabled()) {
-                 log.debug(hql);
+                 log.debug(bsql + resultadosOrdenados);
             }
         
-            Query query = HibernateUtil.getSession()
-                                        .createQuery(hql);
+            Query query = HibernateUtil.getSession().createQuery(bsql);
+
             if (log.isDebugEnabled()) {
                  log.debug("<<<<<<<<< create query ok " );
             }
 
+           
             if (log.isDebugEnabled()) {
                  log.debug("<<<<<<<<< set Parameter ok antes del query list >>>>>");
             }
-            ciudades = query.list();
-
-            return ciudades;
+             results = query.list();
+            int resultado = results.size();
+            if (log.isDebugEnabled()) {
+                 log.debug("<<<<<<<<< Result size " + resultado);
+            }
+            
 
         } catch (HibernateException ex) {
             if (log.isWarnEnabled()) {
@@ -246,7 +281,10 @@ if (log.isDebugEnabled()) {
             throw new ExcepcionInfraestructura(ex);
         }
 
-        return resultadosdatos;
+        return results;
     }
+
+
+
 
 }
