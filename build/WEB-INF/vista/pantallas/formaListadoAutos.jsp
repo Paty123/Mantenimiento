@@ -61,64 +61,50 @@ $(document).ready(function()
 
 
 
-    <br>
-    <font size='5'><fmt:message key="formaListadoAutos.titulo" /></font>
-   
-      <div class="table" style="width:100%"  id="tablecontent">
-          <div class="tr">
-              <div class="td" colspan="4" style="padding-top:25px; padding-bottom:25px;">
             
 
 
 <div class="contenedor">
   <h4>Reporte de Autos Agregados</h4>
-
+<table>
              <a href="solicitarRegistroAuto.do" class="HipervinculoAdmon boton">Agregar nueva Auto...</a>
-              </div>
-          </div>
-          <div class="tr">
-              <div class="td" colspan="4">
-                 <html:errors />
-              </div>
-          </div>
-          <div class="tr enlaces" style="background:#CCCCCC">
-           <div class="td" style="width:16%"><b id="marca"><fmt:message key="formaListadoAutos.etiqueta.marca" /></b></div>
-           <div class="td" style="width:16%"><b id="color"><fmt:message key="formaListadoAutos.etiqueta.color" /></b></div>
-           <div class="td" style="width:16%"><b id="placas"><fmt:message key="formaListadoAutos.etiqueta.placas" /></b></div>
-           <div class="td" style="width:16%"><b id="propietario"><fmt:message key="formaListadoAutos.etiqueta.propietario" /></b></div>
-           <div class="td" style="width:16%"><b id="ciudad"><fmt:message key="formaListadoAutos.etiqueta.ciudad" /></b></div>
-           
-           <div class="td"  style="width:16%"><b><fmt:message key="formaListadoAutos.etiqueta.administracion" /></b></div>
-          </div>
-          <c:forEach var="auto" items="${formaListadoAutos.autos}">
-              <div class="tr">
-                  <div class="td" align="left" style="width:16%"><c:out value="${auto.marca}"/></div>
-                  <div class="td" align="left" style="width:16%"><c:out value="${auto.color}"/></div>
-                  <div class="td" align="left" style="width:16%"><c:out value="${auto.placas}"/></div>
-                  <div class="td" align="left" style="width:16%"><c:out value="${auto.propietario}"/></div>
-                  <div class="td" align="left" style="width:16%">
-                    <c:forEach var="auto" items="${formaListadoAutos.autos}">
-                      <c:if test="${auto.id == auto.id}">
-                        <c:out value="${auto.marca}"/>
-                      </c:if>
-                    </c:forEach>
-                    
-                  </div>
-                  <div class="td" align="left" style="width:16%">
-                      <a href='solicitarModificarAuto.do?id=<c:out value="${auto.id}"/>'
-               class="HipervinculoAdmon">
-                          <fmt:message key="formaListadoAutos.etiqueta.modificar" />
-                      </a>
-                      <a href='procesarEliminarAuto.do?id=<c:out value="${auto.id}"/>'
-               onClick="javascript: return EliminarAuto('<c:out value="${auto.marca}"/>');
-               class="HipervinculoAdmon">
-                          <fmt:message key="formaListadoAutos.etiqueta.eliminar" />
-                      </a>
-                  </div>
-              </div>
-          </c:forEach>
-          <div class="tr">
-              <div class="td" colspan="4" align="right" style="padding-top:25px;"><b>Total:</b> ${formaListadoAutos.contador}</div>
-          </div>
-      </div>
-      </div>
+              
+        
+         
+             <html:errors />
+           <tr>
+         <td class="ordena"><b><fmt:message key="formaListadoAutos.etiqueta.marca" /></b></td>
+         <td class="ordena"><b><fmt:message key="formaListadoAutos.etiqueta.color" /></b></td>
+         <td class="ordena"><b><fmt:message key="formaListadoAutos.etiqueta.placas" /></b></td>
+         <td class="ordena"><b><fmt:message key="formaListadoAutos.etiqueta.propietario" /></b></td>
+         <td class="ordena"><b><fmt:message key="formaListadoAutos.etiqueta.ciudad" /></b></td>
+         <td ><b><fmt:message key="formaListadoAutos.etiqueta.modificar" /></b></td>
+         <td ><b><fmt:message key="formaListadoAutos.etiqueta.eliminar" /></b></td>
+        </tr>
+        <c:forEach var="Autos" items="${formaListadoAutos.autos}">
+            <tr>
+                <td align="left"><c:out value="${Autos.marca}"/></td>
+                <td align="left"><c:out value="${Autos.color}"/></td>
+                <td align="left"><c:out value="${Autos.placas}"/></td>
+                <td align="left"><c:out value="${Autos.propietario}"/></td>
+                <td align="left"><c:out value="${Autos.ciudad}"/></td>
+                <td align="left">
+                    <a href='solicitarModificarAutos.do?id=<c:out value="${Autos.id}"/>'
+                       class="HipervinculoAdmon">
+                        <fmt:message key="formaListadoAutos.etiqueta.modificar" />
+                    </a>
+                </td>
+                <td>
+                    <a href='procesarEliminarAuto.do?id=<c:out value="${Autos.id}"/>'
+                       onClick="javascript: return EliminarAuto('<c:out value="${Pacientes.nombre}"/>')"
+                       class="HipervinculoAdmon">
+                        <fmt:message key="formaListadoAutos.etiqueta.eliminar" />
+                    </a>
+                </td>
+            </tr>
+        </c:forEach>
+        <tr>
+            <td colspan="4" align="right" style="padding-top:25px;"><b>Total:</b> ${formaListadoAutos.contador}</td>
+        </tr>
+    </table>
+</div>

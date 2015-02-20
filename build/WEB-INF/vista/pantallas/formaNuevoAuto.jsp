@@ -3,100 +3,90 @@
     <%@ taglib uri="/WEB-INF/vista/etiquetas/struts-html.tld" prefix="html" %>
 
 
-    <br>
-    <font size='5'><fmt:message key="formaNuevoAuto.titulo" /></font>
-
-    <form id="forma" action="procesarRegistroAuto.do" method="post">
-        <div class="table">
-            <div class="tr">
-                <div class="td" colspan="2">
-                   <html:errors />
-                </div>
-            </div>
-            <div class="tr">
-                <div class="td" align="right">
-                    <fmt:message key="formaNuevoAuto.etiqueta.marca" />
-                </div>
-                <div class="td" align="left">
-                    <input type="text" 
-                           name="marca" 
-                           size="50" 
-                           maxlength="100" 
-                           value="${formaNuevoAuto.marca}" />
-                </div>
-            </div>
-            <div class="tr">
-                <div class="td" align="right">
-                    <fmt:message key="formaNuevoAuto.etiqueta.color" />
-                </div>
-                <div class="td" align="left">
-                    <input type="text" 
-                           name="color" 
-                           size="50" 
-                           maxlength="100" 
-                           value="${formaNuevoAuto.color}" />
-                </div>
-
-<div class="tr">
-                <div class="td" align="right">
-                    <fmt:message key="formaNuevoAuto.etiqueta.placas" />
-                </div>
-                <div class="td" align="left">
-                    <input type="text" 
-                           name="color" 
-                           size="50" 
-                           maxlength="100" 
-                           value="${formaNuevoAuto.placas}" />
-                </div>
 
 
-<div class="tr">
-                <div class="td" align="right">
-                    <fmt:message key="formaNuevoAuto.etiqueta.propietario" />
-                </div>
-                <div class="td" align="left">
-                    <input type="text" 
-                           name="color" 
-                           size="50" 
-                           maxlength="100" 
-                           value="${formaNuevoAuto.propietario}" />
-                </div>
+<script type="text/javascript"  src="js/jquery.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+  $('#muestra').on('keyup',function(){
+
+    var valor=$('#muestra').val();
+
+    $.ajax({
+
+      type:"post",url:'solicitarListarCiudadesXML.do?letra'+valor,dataType:"html",success:function(data){
+
+        $('ListaOrdenada').html(data);
+        $('ListaOrdenada').css('display','block');
+      },
+      error:function(){
+
+        alert("Un error al procesar el archivo ");
+      }
+    });
+
+    $('body').on('mouseover','ciudad',function(){
+      $(this).css('background-color','lightblue');
+
+    )};
+    $('body').on('click','.ciudad',function()
+    {
+      $('#muestra').val($(this).html());
+      $('#ListaOrdenada').css('display','none');
+      });
+
+  });
+</script>
 
 
 
+<div class="sixteen column">
+  
+  <html:errors />
+  <h3>Agregar un nuevo Auto</h3>
+  <form id="formaRegistro" action="procesarRegistroAuto.do" method="post">
+    <label>Marca: </label><input 
+    type="text" 
+    name="marca"
+    value="${formaNuevoAuto.marca}">
+    <label>Color : </label><input 
+    type="text" 
+    name="color"
+    value="${formaNuevoAuto.color}">
+    <label>Placas: </label><input 
+    type="text" 
+    name="placas"
+    value="${formaNuevoAuto.placas}">
+    <label>Propietario : </label><input 
+    type="text" 
+    name="propietario"
+    value="${formaNuevoAuto.propietario}">
+    <label>Ciudad : </label><input 
+    type="text" 
+    id="muestra"
+    name="ciudad"
+    value="${formaNuevoAuto.ciudad}">
+    <div id="ListaOrdenada"style="display:none;
 
-
-            </div>
-            <div class="tr">
-                <div class="td" align="right">
-                    <fmt:message key="formaNuevoAuto.etiqueta.estado" />
-                </div>
-                <div class="td" align="left">
-                    <select name="idEstado" >
-                      <c:forEach var="estado" items="${formaNuevoAuto.estados}">
-                        <option value='<c:out value="${estado.id}" />'><c:out value="${estado.nombre}" /></option>
-                      </c:forEach>
-                    </select>
-                </div>
-            </div>
-                  
-            <div class="tr">
-                <div class="td" style="width:400px;" align="center">
-                    <input type="submit" 
-                           name="submit"
-                           value="Agregar y terminar"/>
-                    <input type="submit" 
-                           name="submit"
-                           value="Agregar y volver"
-                           onclick="forma.action='procesarRegistroAuto.do?volver=si'"/>
-                    <input type="button"
-                           value="Reset"
-                           onclick="location.href='solicitarRegistroAuto.do'" />
-                    <input type="submit" 
-                           name="org.apache.struts.taglib.html.CANCEL" 
-                           value="cancelar" 
-                           onclick="bCancel=true;">    
-                </div>
-            </div>
-        </div>
-    </form>
+margin-top: 1px;
+width: 220px;
+height: 200px;
+  "></div>
+    <input type="submit" 
+           name="submit"
+           value="Agregar y terminar"/>
+    <input type="submit" 
+           name="submit"
+           value="Agregar y volver"
+           onclick="forma.action='procesarRegistroAuto.do?volver=si'"/>
+    <input type="button"
+           value="Reset"
+           onclick="location.href='solicitarRegistroAuto.do'" />
+    <input type="submit" 
+           name="org.apache.struts.taglib.html.CANCEL" 
+           value="cancelar" 
+           onclick="bCancel=true;">    
+  </form>
+</div>

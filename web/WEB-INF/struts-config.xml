@@ -442,6 +442,42 @@
 
 
         <!--////////////////////Autos/////////////////////-->
+ <!--////////////////////Autos/////////////////////-->
+
+
+<action path="/solicitarListarCiudadesXML"
+                type="edu.uag.iidis.scec.control.MCUListarCiudades"
+                parameter="ListarCiudadesParecidas"
+                name="formaListadoCiudades"
+                scope="request"
+                validate="false">
+            <forward name="exito" path="/WEB-INF/vista/pantallas/formaListadoCiudadesXML.jsp"/>
+            
+        </action>
+
+<action path="/solicitarListarAutosOrdenados"
+                type="edu.uag.iidis.scec.control.MCUListarAutos"
+                parameter="ListarAutosOrdenados"
+                name="formaListadoAutos"
+                scope="request"
+                validate="false">
+            <forward name="exito" path="/WEB-INF/vista/pantallas/formaAutosOrdenados.jsp"/>
+            
+        </action>
+
+
+
+
+
+  <!--////////////////////Autos/////////////////////-->
+
+
+
+
+
+
+
+
         <action path="/registroUsuario"
                 type="edu.uag.iidis.scec.control.MCURegistrarLogin"
                 parameter="solicitarRegistro"
