@@ -69,7 +69,7 @@ body {
 	background: #f1f1f1;
 }
 .barraBanner2 {
-	backgroug-color:#3DD2FF; 
+
 	margin-left: auto;
 	margin-right: auto;
 	width: 1000px;
@@ -78,14 +78,14 @@ body {
 }
 .barraBanner2 span {
 	padding: 10px;
-	margin: 0 10px;
+	margin: 0 20px;
 	color: black;
 	border-radius: 10px;
 }
 .barraBanner2 #big {
 	font-size: 70px;
 	font-family: 'Open Sans Condensed', sans-serif;
-	backgroug-color:#3DD2FF; 
+	background-color:#3DD2FF; 
 	color:white;
 }
 .barraBanner2 #descripcion {
@@ -98,13 +98,14 @@ body {
 .barramenu2 {
 	padding: 10px;
 	border: 1px solid #777;
-	background:#00BFFF;
-	margin-top: 20px;list-style:none;
+	margin-top: 20px;
+	list-style:none;
 	font-family: 'Open Sans Condensed', sans-serif;
 }
 .barramenu2 span {
-	border-right: 1px solid #777;
-	padding: 0 10px;
+	background:#00BFFF;
+	border: 1px solid #777;
+	padding: 10px 20px;
 }
 .inicio {
 	padding: 50px;
@@ -235,4 +236,7 @@ body {
 		font-size: 27px;
 	}
 
+}
+a{
+	text-decoration: none;
 }

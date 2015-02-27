@@ -1,7 +1,8 @@
 	<!-- Inicio Sección - Pie de Página -->
 	<!-- Inicio Seccion - Barra Menu Pie de Página --><meta charset="UTF-8">
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+	
 	<section class="footer">
+		<meta charset="UTF-8">
 		Acerca de | Ayuda | Hacer Recomendación | Reportar Problema
 	</section>
 	<!-- Fin Seccion - Barra Menu Pie de Página -->	
