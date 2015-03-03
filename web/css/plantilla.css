@@ -97,10 +97,10 @@ body {
 }
 .barramenu2 {
 	padding: 10px;
-	border: 1px solid #777;
 	margin-top: 20px;
 	list-style:none;
 	font-family: 'Open Sans Condensed', sans-serif;
+	margin-left: 30px;
 }
 .barramenu2 span {
 	background:#00BFFF;
